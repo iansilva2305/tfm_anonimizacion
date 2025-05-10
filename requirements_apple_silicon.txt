@@ -1,0 +1,46 @@
+# Requerimientos optimizados para MacBook Pro con Apple M2 Pro (macOS 15.4.1)
+
+# Bibliotecas Core Optimizadas para Apple Silicon
+pandas>=1.5.3
+numpy>=1.24.3
+scipy>=1.10.1
+scikit-learn>=1.2.2
+matplotlib>=3.7.1
+seaborn>=0.12.2
+
+# Optimizaciones para aceleración M2 Pro
+tensorflow-macos>=2.12.0  # Versión específica para Apple Silicon
+tensorflow-metal>=0.8.0   # Acelerador Metal para GPU del M2 Pro
+torch>=2.0.0              # Versión con soporte nativo para MPS
+
+# Anonimización y Privacy
+cryptography>=39.0.2      # Optimizado para ARM
+hashlib                   # Incluido en Python
+faker>=18.4.0             # Para generación de datos sintéticos
+anonymizedf>=1.0.1        # Si no está disponible, se usan funciones propias
+
+# Optimizaciones de almacenamiento y carga
+pyarrow>=12.0.0           # Para formatos columnar eficientes (Parquet)
+fastparquet>=2023.4.0     # Mayor rendimiento en M2
+zstandard>=0.20.0         # Compresión eficiente para Apple Silicon
+
+# Visualización de alto rendimiento
+plotly>=5.14.1            # Visualizaciones interactivas optimizadas
+kaleido>=0.2.1            # Exportación de gráficos
+ipywidgets>=8.0.6         # Widgets interactivos para notebook
+
+# Desarrollo y notebooks
+jupyter>=1.0.0
+jupyterlab>=3.6.3
+notebook>=6.5.4
+ipykernel>=6.22.0
+
+# Aceleración y paralelización para M2 Pro
+joblib>=1.2.0             # Paralelización eficiente
+numba>=0.57.0             # Compilación JIT optimizada para ARM
+dask>=2023.4.1            # Computación paralela para grandes datasets
+
+# Visualización y dashboard
+streamlit>=1.22.0         # Para dashboards interactivos
+altair>=5.0.1             # Visualizaciones declarativas de alto rendimiento
+pillow>=9.5.0             # Optimizado para ARM
