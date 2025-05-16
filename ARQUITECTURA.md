@@ -11,7 +11,7 @@ Este documento detalla la arquitectura técnica del sistema, optimizada específ
                                     │
                                     ▼
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                            Capa de Datos                                 │
+│                            Capa de Datos                                │
 │  ┌───────────────┐     ┌──────────────┐      ┌────────────────────────┐ │
 │  │ Datos Crudos  │────▶│   Datos      │─────▶│     Datos              │ │
 │  │(Parquet/CSV)  │     │Preprocesados │      │   Anonimizados         │ │
@@ -25,11 +25,11 @@ Este documento detalla la arquitectura técnica del sistema, optimizada específ
 │  │  Módulo EDA    │   │   Módulo de   │   │     Módulo de             │ │
 │  │(Paralelizado)  │──▶│ Anonimización │──▶│     Modelado              │ │
 │  └────────────────┘   └───────────────┘   └─────────────┬─────────────┘ │
-│           │                                              │               │
-│           │                                              │               │
+│           │                                              │              │
+│           │                                              │              │
 │  ┌────────▼───────┐                           ┌──────────▼──────────┐   │
 │  │   Módulo de    │                           │     Módulo de       │   │
-│  │ Comparativa    │◀─────────────────────────▶│ Evaluación GDPR    │   │
+│  │ Comparativa    │◀─────────────────────────▶│ Evaluación GDPR    │    │
 │  └────────────────┘                           └─────────────────────┘   │
 └───────────────────────────────────┬─────────────────────────────────────┘
                                     │
@@ -181,11 +181,11 @@ Optimizaciones específicas en este flujo:
 Específicamente para equilibrar rendimiento y uso de batería:
 
 ```
-┌──────────────┐     ┌────────────┐     ┌────────────┐
+┌──────────────┐     ┌────────────┐     ┌────────────-┐
 │   Detección  │     │Optimización│     │Configuración│
-│Disponibilidad│────▶│  Dinámica  │────▶│   Óptima   │
-│  Recursos    │     │  Recursos  │     │            │
-└──────────────┘     └────────────┘     └────────────┘
+│Disponibilidad│────▶│  Dinámica  │────▶│   Óptima    │
+│  Recursos    │     │  Recursos  │     │             │
+└──────────────┘     └────────────┘     └────────────-┘
         │                  │                  │
         ▼                  ▼                  ▼
 ┌──────────────┐     ┌────────────┐     ┌────────────┐
@@ -222,7 +222,7 @@ Configuraciones adaptativas:
 
 ### Optimizaciones de Almacenamiento específicas para macOS
 
-- **Tipos de Sistema de Archivos**: APFS (optimizado para SSD)
+- **Tipos de Sistema de Archivos**: APFS (optimizado para SSD). APFS es similar a NTFS en Windows.
 - **Compresión Integrada**: APFS proporciona compresión transparente
 - **Snapshots**: Uso de Time Machine para snapshots automáticos
 - **Caché**: Ubicación óptima en /private/var/folders/ (gestionado por macOS)
@@ -240,7 +240,7 @@ Configuraciones adaptativas:
 
 | Componente | Integración macOS | Optimización |
 |------------|-------------------|-------------|
-| JupyterLab | Navegador Safari optimizado | Mejor rendimiento que Chrome/Firefox en M2 |
+| JupyterLab | Navegador Chrome/Firefox optimizado | Mejor rendimiento que Chrome/Firefox en M2 |
 | Streamlit | Integración con SF Pro (fuente nativa) | UI/UX consistente con macOS |
 | Matplotlib | Renderizado Retina automático | Gráficos nítidos en pantalla de alta resolución |
 | Terminal | Uso de iTerm2 con integración Apple Silicon | Mejor rendimiento para scripts CLI |
@@ -340,7 +340,7 @@ def detectar_perfil_optimo():
 
 ```
 ┌─────────────────────────────────────────────────┐
-│                  Python 3.11+                    │
+│                  Python 3.8+                    │
 └──────────────────────┬──────────────────────────┘
                        │
 ┌──────────────────────┼──────────────────────────┐
@@ -372,7 +372,7 @@ def detectar_perfil_optimo():
 
 ## Consideraciones de Escalabilidad en MacBook Pro
 
-Aunque tu MacBook Pro M2 Pro es una máquina potente, hay estrategias para escalar:
+Aunque el MacBook Pro M2 Pro es una máquina potente, hay estrategias para escalar:
 
 ### Escalabilidad Vertical (en tu MacBook)
 - **Gestión de Memoria**: Técnicas de reducción de precisión para procesar datasets más grandes
@@ -444,23 +444,23 @@ Integración con las capacidades de seguridad de macOS:
 ### Flujo de Datos Interno
 
 ```
-┌───────────────┐     ┌───────────┐     ┌────────────┐
+┌───────────────┐     ┌───────────┐     ┌────────────-┐
 │ Carga de Datos│     │Preprocesa-│     │Anonimización│
 │ (PyArrow)     │────▶│miento     │────▶│(Paralela)   │
-└───────────────┘     └───────────┘     └────────────┘
+└───────────────┘     └───────────┘     └────────────-┘
         │                   │                  │
         │                   │                  │
         ▼                   ▼                  ▼
 ┌───────────────┐     ┌───────────┐     ┌────────────┐
-│ Archivo       │     │DataFrame   │     │DataFrame   │
-│ Parquet       │     │Pandas      │     │Anonimizado │
+│ Archivo       │     │DataFrame   │    │DataFrame   │
+│ Parquet       │     │Pandas      │    │Anonimizado │
 └───────────────┘     └───────────┘     └────────────┘
                                               │
                                               │
                                               ▼
 ┌───────────────┐     ┌───────────┐     ┌────────────┐
 │ Evaluación    │     │Modelado   │     │Train/Test  │
-│ GDPR          │◀────│RandomForest│◀────│Split       │
+│ GDPR          │◀────│RandomForest│◀───│Split       │
 └───────────────┘     └───────────┘     └────────────┘
         │                   │
         │                   │

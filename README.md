@@ -47,7 +47,7 @@ El sistema sigue una arquitectura modular organizada en pipelines secuenciales:
 │            Pipeline de Preprocesamiento y EDA             │
 │ ┌─────────────┐    ┌────────────┐     ┌────────────────┐  │
 │ │  Carga de   │───▶│  Análisis  │────▶│ Identificación │  │
-│ │   Datos     │    │ Exploratorio│     │ Datos Sensibles│  │
+│ │   Datos     │    │ Exploratorio│    │ Datos Sensibles│  │
 │ └─────────────┘    └────────────┘     └────────────────┘  │
 └────────────────────────────┬──────────────────────────────┘
                              │
@@ -83,7 +83,7 @@ El sistema sigue una arquitectura modular organizada en pipelines secuenciales:
 
 ## 🚀 Ventajas en MacBook Pro M2
 
-Tu MacBook Pro de 14 pulgadas (2023) con chip M2 Pro y 16GB de RAM ofrece ventajas significativas para este sistema:
+El MacBook Pro de 14 pulgadas (2023) con chip M2 Pro y 16GB de RAM ofrece ventajas significativas para este sistema:
 
 - **Procesamiento Paralelo**: El chip M2 Pro permite paralelizar el entrenamiento de modelos, reduciendo los tiempos hasta 5-10x.
 - **Memoria Unificada**: 16GB de memoria unificada facilita el procesamiento de conjuntos de datos de tamaño medio-grande (hasta ~10M de registros).
@@ -93,7 +93,7 @@ Tu MacBook Pro de 14 pulgadas (2023) con chip M2 Pro y 16GB de RAM ofrece ventaj
 
 ## 💻 Requisitos del Sistema
 
-### Hardware (Ya disponible en tu MacBook)
+### Hardware (Ya disponible en el MacBook Pro)
 - CPU: Apple M2 Pro (10-12 núcleos)
 - RAM: 16GB de memoria unificada
 - Almacenamiento: SSD de alta velocidad
@@ -111,8 +111,8 @@ Tu MacBook Pro de 14 pulgadas (2023) con chip M2 Pro y 16GB de RAM ofrece ventaj
 
 2. Clona este repositorio:
 ```bash
-git clone https://github.com/su-usuario/anonimizacion-fraude-bancario.git
-cd anonimizacion-fraude-bancario
+git clone https://github.com/iansilva2305/tfm_anonimizacion.git
+cd tfm_anonimizacion
 ```
 
 3. Crea un entorno virtual optimizado para Apple Silicon:
@@ -136,7 +136,7 @@ python -c "import numpy as np; print(f'NumPy detecta {np.zeros(1).__array_interf
 
 ### Ejecución Optimizada
 
-Para aprovechar al máximo tu M2 Pro, ejecuta el sistema así:
+Para aprovechar al máximo el MacBook Pro M2, ejecuta el sistema así:
 
 ```python
 # Configuración de paralelización para M2 Pro
@@ -204,7 +204,7 @@ streamlit run gdpr_dashboard.py
 
 ## ⚡ Optimizaciones de Rendimiento
 
-Aprovecha al máximo tu MacBook Pro con estas optimizaciones:
+Aprovecha al máximo el MacBook Pro con estas optimizaciones:
 
 ### Optimización de Memoria
 
@@ -256,7 +256,7 @@ Con tu configuración específica, puedes esperar:
 
 Este sistema está diseñado para cumplir con los siguientes principios clave del GDPR:
 
-### Principios Implementados
+### Principios Implementados del Framework de GDPR
 - **Minimización de datos (Art. 5.1.c)**: Reducción de granularidad mediante agrupación
 - **Privacidad desde el diseño (Art. 25)**: Anonimización incorporada desde el inicio
 - **Derecho al olvido (indirecto)**: Datos anonimizados que no permiten identificación

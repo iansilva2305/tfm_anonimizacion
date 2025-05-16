@@ -1,6 +1,6 @@
 # Guía de Despliegue: Sistema de Anonimización y Detección de Fraude
 
-Esta guía proporciona instrucciones detalladas para implementar el sistema de anonimización y detección de fraude específicamente optimizado para tu MacBook Pro de 14 pulgadas (2023) con chip M2 Pro, 16GB de RAM y macOS 15.4.1.
+Esta guía proporciona instrucciones detalladas para implementar el sistema de anonimización y detección de fraude específicamente optimizado para el MacBook Pro de 14 pulgadas (2023) con chip M2 Pro, 16GB de RAM y macOS 15.4.1.
 
 ## Tabla de Contenidos
 - [Configuración Optimizada para M2 Pro](#configuración-optimizada-para-m2-pro)
@@ -13,7 +13,7 @@ Esta guía proporciona instrucciones detalladas para implementar el sistema de a
 
 ## Configuración Optimizada para M2 Pro
 
-Tu MacBook Pro ofrece un excelente rendimiento para este sistema gracias a:
+El MacBook Pro ofrece un excelente rendimiento para este sistema gracias a:
 
 - **Procesador M2 Pro**: 10-12 núcleos de CPU que pueden acelerar procesamiento paralelo
 - **16GB de memoria unificada**: Permite cargar datasets medianos-grandes completamente en memoria
@@ -45,7 +45,7 @@ mkdir -p ~/Documents/fraud_detection
 cd ~/Documents/fraud_detection
 
 # Clonar repositorio
-git clone https://github.com/su-usuario/anonimizacion-fraude-bancario.git .
+git clone ttps://github.com/iansilva2305/tfm_anonimizacion.git .
 ```
 
 ### 2. Entorno Virtual Optimizado para M2
@@ -174,7 +174,7 @@ def procesar_dataset_grande(ruta_archivo, funcion_proceso):
 
 ### 1. Formato de Archivo Recomendado
 
-Para tu MacBook Pro con SSD rápida, Parquet ofrece mejores prestaciones:
+Para el MacBook Pro con SSD rápida, Parquet ofrece mejores prestaciones:
 
 ```python
 # Convertir desde CSV a Parquet optimizado
@@ -492,7 +492,7 @@ def optimizar_modelo_inferencia(modelo, archivo_salida=None):
 def anonimizar_adaptativo(df, columna, k_min=5, k_max=20, precision_min=0.75, n_jobs=-1):
     """
     Encuentra el valor óptimo de k que mantiene precisión aceptable.
-    Aprovecha paralelización en M2 Pro.
+    Aprovecha paralelización en MBP M2 Pro.
     """
     from sklearn.model_selection import train_test_split, cross_val_score
     from sklearn.ensemble import RandomForestClassifier
@@ -587,4 +587,4 @@ def modo_ahorro_energia():
 
 ---
 
-Esta guía de despliegue está específicamente optimizada para tu MacBook Pro con M2 Pro y macOS 15.4.1. Aprovecha las capacidades de tu hardware para obtener el mejor rendimiento en el sistema de anonimización y detección de fraude.
+Esta guía de despliegue está específicamente optimizada para el uso del entorno Apple Silicon, lo que permite un despliegue más eficiente y rápido. MacBook Pro con M2 Pro y macOS 15.4.1. Aprovecha las capacidades del hardware para obtener el mejor rendimiento en el sistema de anonimización y detección de fraude.
